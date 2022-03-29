@@ -1,0 +1,79 @@
+.error-page--content {
+    background-image: url('../../../public/img/bg-lost-in-space.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 57%);
+}
+
+.error-page--content h1 {
+    padding-top: 8rem;
+    font-size: 6em;
+    font-weight: 700;
+    margin-bottom: 2vw;
+    margin-top: 0;
+}
+
+.error-page--content--body {
+    margin: 0 auto;
+    padding-bottom: 8.7em;
+    width: 50vw;
+}
+
+.error-page--content--body p {
+    font-size: 2.2em;
+    font-weight: 300;
+}
+
+.error-page--content--buttons {
+    justify-content: center;
+}
+
+.error-page--content--buttons--text {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    background-color: white;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.4rem;
+    appearance: none;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.error-page--content--errorCode {
+    margin-top: 2em;
+}
+
+.error-page--content--errorCode span {
+    border-left: 2px solid #e50914;
+    font-size: 2.4em;
+    font-weight: 100;
+    letter-spacing: .1em;
+    line-height: 2.2em;
+    padding: 0 1vw;
+}
+
+.error-page--imageSource {
+    bottom: 0;
+    color: rgba(229,229,229,.57);
+    font-size: 1.4em;
+    font-weight: 100;
+    letter-spacing: .1em;
+    line-height: 1.5vw;
+    margin: 2.5vw 4.8vw;
+    position: fixed;
+    right: 0;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 57%);
+}
