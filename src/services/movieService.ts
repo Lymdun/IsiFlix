@@ -8,11 +8,15 @@ const API_KEY = 'c92d933775007acb6822af260d3d457e';
 const MovieService = {
   async originals(): Promise<MovieItem[]> {
     try {
+      const options = {
+        headers: { 'Content-Type': 'application/json' },
+      };
       const res = await Axios.get(
         API_BASE +
-          'discover/tv/?api_key=' +
+          'discover/tv?api_key=' +
           API_KEY +
-          '&with_network=213&language=fr-FR/'
+          '&with_network=213&language=fr-FR/',
+        options
       );
       const results: MovieItem[] = [];
 
