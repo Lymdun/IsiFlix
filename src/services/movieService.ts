@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import Axios from '../axios/axios';
 import { MovieItem } from '../models/MovieItem';
 
-const API_BASE = 'http://api.themoviedb.org/3/';
+const API_BASE = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c92d933775007acb6822af260d3d457e';
 
 const MovieService = {
