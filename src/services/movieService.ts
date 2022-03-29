@@ -11,7 +11,8 @@ const MovieService = {
       const res = await Axios.get(
         API_BASE +
           'discover/tv/?with_network=213&language=fr-FR&api_key=' +
-          API_KEY
+          API_KEY +
+          '/'
       );
       const results: MovieItem[] = [];
 
