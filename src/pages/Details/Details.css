@@ -22,3 +22,16 @@
     font-size: 60px;
     color: white;
 }
+
+.details--description {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #999999;
+    max-width: 40%;
+}
+
+.details--genres {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #999999;
+}

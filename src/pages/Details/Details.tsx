@@ -5,17 +5,33 @@ import { Movie } from '../../models/Movie';
 import MovieService from '../../services/movieService';
 import './Details.css';
 
+function useMovieStatus(movie: Movie | undefined) {
+  const [isMovie, setIsMovie] = useState<boolean>(false);
+  const isMovieType = !window.location.hash;
+
+  useEffect(() => {
+    setIsMovie(isMovieType);
+  }, [isMovieType]);
+
+  return isMovie;
+}
+
 function Details() {
   let { movieId } = useParams();
   const [movie, setMovie] = useState<Movie>();
+  let isMovieType = useMovieStatus(movie);
 
   useEffect(() => {
     const loadMovie = async () => {
-      let movieItem = await MovieService.fetchMovieDetails(movieId);
+      let movieItem = await MovieService.fetchMovieDetails(
+        movieId,
+        !!isMovieType
+      );
       setMovie(movieItem);
     };
+
     loadMovie();
-  }, [movieId]);
+  }, [movieId, isMovieType]);
 
   return (
     <section>
@@ -28,7 +44,11 @@ function Details() {
         >
           <section className="details--vertical">
             <div className="details--horizontal">
-              <h2 className="details--name">{movie.name}</h2>
+              <h2 className="details--name">{movie.title || movie.name}</h2>
+              <h4 className="details--description">{movie.overview}</h4>
+              <div className="details--genres">
+                <strong>Genres :</strong> {movie.genres?.join(', ')}
+              </div>
             </div>
           </section>
         </main>
