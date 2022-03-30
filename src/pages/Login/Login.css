@@ -1,0 +1,14 @@
+.mainDiv {
+  text-align: center;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 300px;
+  height: 300px;
+  margin-left: 20px;
+}
