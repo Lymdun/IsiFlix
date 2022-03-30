@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MovieItem } from '../../models/MovieItem';
 import './MovieRow.css';
+import { Link } from 'react-router-dom';
 
 export interface Props {
   title: string;
@@ -48,10 +49,12 @@ function MovieRow(props: Props) {
             props.movies!.length > 0 &&
             props.movies?.map((item) => (
               <div key={item.id} className="movieRow--item">
-                <img
-                  src={'https://image.tmdb.org/t/p/w300' + item.poster_path}
-                  alt={item.original_title}
-                ></img>
+                <Link to={`/details/${item.id}`}>
+                  <img
+                    src={'https://image.tmdb.org/t/p/w300' + item.poster_path}
+                    alt={item.original_title}
+                  ></img>
+                </Link>
               </div>
             ))}
         </div>

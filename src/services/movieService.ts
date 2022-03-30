@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 import Axios from '../axios/axios';
 import { MovieItem } from '../models/MovieItem';
+import { Movie } from '../models/Movie';
 
 const API_BASE = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c92d933775007acb6822af260d3d457e'; // todo externaliser
@@ -47,6 +48,22 @@ const MovieService = {
   },
   async horror(): Promise<MovieItem[]> {
     return getMovieItemList('discover/movie?with_genres=27&language=fr-FR');
+  },
+
+  async fetchMovieDetails(id: string | undefined): Promise<Movie> {
+    try {
+      const res = await Axios.get<Movie>(
+        API_BASE + 'tv/' + id + '?api_key=' + API_KEY + '&language=fr-FR/'
+      );
+
+      return res.data;
+    } catch (error) {
+      let errorMessage: string | undefined = 'Erreur inconnue';
+      if ((error as AxiosError).isAxiosError) {
+        errorMessage = (error as AxiosError).response?.status.toString();
+      }
+      throw new Error(errorMessage);
+    }
   },
 };
 

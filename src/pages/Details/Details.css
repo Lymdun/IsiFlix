@@ -1,0 +1,24 @@
+.details--content {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.details--vertical {
+    height: inherit;
+    background: linear-gradient(to top, #111 10%, transparent 90%);
+}
+
+.details--horizontal {
+    height: inherit;
+    background: linear-gradient(to right, #111 30%, transparent 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 30px;
+}
+
+.details--name {
+    font-size: 60px;
+    color: white;
+}
