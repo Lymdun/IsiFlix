@@ -5,29 +5,17 @@ import { Movie } from '../../models/Movie';
 import MovieService from '../../services/movieService';
 import './Details.css';
 
-function useMovieStatus(movie: Movie | undefined) {
-  const [isMovie, setIsMovie] = useState<boolean>(false);
-  const isMovieType = !!movie?.release_date;
-
-  setIsMovie(isMovieType);
-
-  return isMovie;
-}
-
 function Details() {
   let { movieId } = useParams();
   const [movie, setMovie] = useState<Movie>();
-  const isMovieType = useMovieStatus(movie);
-
-  const loadMovie = async () => {
-    let movieItem = await MovieService.fetchMovieDetails(movieId, isMovieType!);
-    setMovie(movieItem);
-  };
 
   useEffect(() => {
+    const loadMovie = async () => {
+      let movieItem = await MovieService.fetchMovieDetails(movieId);
+      setMovie(movieItem);
+    };
     loadMovie();
-    console.log('AAA');
-  }, []);
+  }, [movieId]);
 
   return (
     <section>
