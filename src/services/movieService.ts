@@ -50,10 +50,18 @@ const MovieService = {
     return getMovieItemList('discover/movie?with_genres=27&language=fr-FR');
   },
 
-  async fetchMovieDetails(id: string | undefined): Promise<Movie> {
+  async fetchMovieDetails(
+    id: string | undefined,
+    isMovie: boolean
+  ): Promise<Movie> {
     try {
       const res = await Axios.get<Movie>(
-        API_BASE + 'tv/' + id + '?api_key=' + API_KEY + '&language=fr-FR/'
+        API_BASE +
+          (!!isMovie ? 'movie/' : 'tv/') +
+          id +
+          '?api_key=' +
+          API_KEY +
+          '&language=fr-FR/'
       );
 
       return res.data;
