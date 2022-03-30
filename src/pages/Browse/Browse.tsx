@@ -5,11 +5,11 @@ import MovieService from '../../services/movieService';
 import './Browse.css';
 
 function Browse() {
-  const [recommended, setRecommended] = useState<Array<MovieItem>>();
-  const [trending, setTrending] = useState<Array<MovieItem>>();
-  const [horror, setHorror] = useState<Array<MovieItem>>();
-  const [comedy, setComedy] = useState<Array<MovieItem>>();
-  const [action, setAction] = useState<Array<MovieItem>>();
+  const [recommended, setRecommended] = useState<Array<MovieItem>>([]);
+  const [trending, setTrending] = useState<Array<MovieItem>>([]);
+  const [horror, setHorror] = useState<Array<MovieItem>>([]);
+  const [comedy, setComedy] = useState<Array<MovieItem>>([]);
+  const [action, setAction] = useState<Array<MovieItem>>([]);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -46,25 +46,31 @@ function Browse() {
 
   return (
     <div>
-      <section>
-        {recommended !== null && (
+      {recommended!.length > 0 && (
+        <section className="rows">
           <MovieRow movies={recommended!} title="Recommandés pour vous" />
-        )}
-      </section>
-      <section>
-        {trending !== null && (
-          <MovieRow movies={trending!} title="Tendances actuelles" />
-        )}
-      </section>
-      <section>
-        {action !== null && <MovieRow movies={action!} title="Action" />}
-      </section>
-      <section>
-        {comedy !== null && <MovieRow movies={comedy!} title="Comédie" />}
-      </section>
-      <section>
-        {horror !== null && <MovieRow movies={horror!} title="Horreur" />}
-      </section>
+        </section>
+      )}
+      {trending.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={trending} title="Tendances actuelles" />
+        </section>
+      )}
+      {action!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={action!} title="Action" />{' '}
+        </section>
+      )}
+      {comedy!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={comedy!} title="Comédie" />
+        </section>
+      )}
+      {horror!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={horror!} title="Ca mérite une bonne note" />
+        </section>
+      )}
     </div>
   );
 }
