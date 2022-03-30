@@ -1,40 +1,77 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import MovieRow from '../../components/MovieRow/MovieRow';
 import { MovieItem } from '../../models/MovieItem';
 import MovieService from '../../services/movieService';
 import './Browse.css';
 
 function Browse() {
-  const [movies, setMovies] = useState<Array<MovieItem>>();
+  const [recommended, setRecommended] = useState<Array<MovieItem>>([]);
+  const [trending, setTrending] = useState<Array<MovieItem>>([]);
+  const [horror, setHorror] = useState<Array<MovieItem>>([]);
+  const [comedy, setComedy] = useState<Array<MovieItem>>([]);
+  const [action, setAction] = useState<Array<MovieItem>>([]);
 
   useEffect(() => {
     const loadMovies = async () => {
-      let list = await MovieService.originals();
-      setMovies(list);
+      fetchRecommended();
+      fetchTrending();
+      fetchAction();
+      fetchComedy();
+      fetchHorror();
     };
     loadMovies();
   }, []);
 
+  async function fetchRecommended(): Promise<void> {
+    const r = await MovieService.recommended();
+    setRecommended(r);
+  }
+
+  async function fetchTrending(): Promise<void> {
+    const r = await MovieService.trending();
+    setTrending(r);
+  }
+  async function fetchAction(): Promise<void> {
+    const r = await MovieService.action();
+    setAction(r);
+  }
+  async function fetchComedy(): Promise<void> {
+    const r = await MovieService.comedy();
+    setComedy(r);
+  }
+  async function fetchHorror(): Promise<void> {
+    const r = await MovieService.horror();
+    setHorror(r);
+  }
+
   return (
-    <section>
-      <div className="movieRow">
-        <h2>Section WIP</h2>
-        <div className="movieRow--listarea">
-          <div className="movieRow--list">
-            {movies !== undefined &&
-              movies!.length > 0 &&
-              movies?.map((item) => (
-                <div key={item.id} className="movieRow--item">
-                  <img
-                    src={'https://image.tmdb.org/t/p/w300' + item.poster_path}
-                    alt={item.original_title}
-                  ></img>
-                </div>
-              ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <div>
+      {recommended!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={recommended!} title="Recommandés pour vous" />
+        </section>
+      )}
+      {trending.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={trending} title="Tendances actuelles" />
+        </section>
+      )}
+      {action!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={action!} title="Action" />{' '}
+        </section>
+      )}
+      {comedy!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={comedy!} title="Comédie" />
+        </section>
+      )}
+      {horror!.length > 0 && (
+        <section className="rows">
+          <MovieRow movies={horror!} title="Ca mérite une bonne note" />
+        </section>
+      )}
+    </div>
   );
 }
 
