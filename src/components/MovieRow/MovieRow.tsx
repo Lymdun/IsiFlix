@@ -32,10 +32,10 @@ function MovieRow(props: Props) {
     <div className="movieRow">
       <h2>{props.title}</h2>
       <div className="movieRow--left" onClick={handleLeftArrow}>
-        <button style={{ fontSize: 50 }} />
+        <p style={{ fontSize: 50 }}>&#60;</p>
       </div>
       <div className="movieRow--right" onClick={handleRightArrow}>
-        <button style={{ fontSize: 50 }} />
+        <p style={{ fontSize: 50 }}>&#62;</p>
       </div>
       <div className="movieRow--listarea">
         <div
