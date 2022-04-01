@@ -1,17 +1,21 @@
 import './Login.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { User } from '../../models/User';
 import UserService from '../../services/userService';
 import { ROOT_ROUTE } from '../../routes/routes';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../../store/MainContext';
+import { MainReducerActions } from '../../actions/MainReducerAction';
 
 function Login() {
   //   const [currentUser, setUser] = useState<User | undefined>(undefined);
   const [users, setUsers] = useState<Array<User>>([]);
   const navigate = useNavigate();
+  const { dispatch } = useContext(AppContext);
 
-  const handleClick = (userId: number) => {
-    // todo add user to store
+  const handleClick = (user: User) => {
+    dispatch({ type: MainReducerActions.EditName, payload: user.name });
+    dispatch({ type: MainReducerActions.Authenticate, payload: '' });
     navigate(ROOT_ROUTE);
   };
 
@@ -34,7 +38,7 @@ function Login() {
               <img
                 className="img"
                 onClick={() => {
-                  handleClick(user.id);
+                  handleClick(user);
                 }}
                 src={user.img_path}
                 alt="img"

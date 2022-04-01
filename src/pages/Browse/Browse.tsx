@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MovieRow from '../../components/MovieRow/MovieRow';
 import { MovieItem } from '../../models/MovieItem';
 import MovieService from '../../services/movieService';
+import { AppContext } from '../../store/MainContext';
 import './Browse.css';
 
 function Browse() {
@@ -10,6 +11,7 @@ function Browse() {
   const [horror, setHorror] = useState<Array<MovieItem>>([]);
   const [comedy, setComedy] = useState<Array<MovieItem>>([]);
   const [action, setAction] = useState<Array<MovieItem>>([]);
+  const context = useContext(AppContext);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -46,6 +48,7 @@ function Browse() {
 
   return (
     <div>
+      <div>Bonjour {context.state.username} !</div>
       {recommended!.length > 0 && (
         <section className="rows">
           <MovieRow movies={recommended!} title="Recommandés pour vous" />
