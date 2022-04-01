@@ -12,8 +12,9 @@ function Header() {
           <img src="../../../img/logo.png" alt="Isiflix" />
         </a>
       </div>
-      <div>{state.username}</div>
-      <button>Déconnexion</button>
+      <div>
+        {state.username} <button>Déconnexion</button>
+      </div>
     </header>
   );
 }

@@ -6,6 +6,7 @@ header {
     right: 0;
     height: 70px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 0 25px;
     background: #111111;
