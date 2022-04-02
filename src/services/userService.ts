@@ -2,6 +2,7 @@ import { User } from '../models/User';
 
 const UserService = {
   async getUsers(): Promise<User[]> {
+    // Mock de la récupération d'une liste d'utilisateur
     const users: User[] = [
       {
         id: 1,
