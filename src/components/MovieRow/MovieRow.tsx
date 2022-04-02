@@ -53,11 +53,16 @@ function MovieRow(props: Props) {
             props.movies!.length > 0 &&
             props.movies?.map((item) => (
               <div key={item.id} className="movieRow--item">
-                <Link to={`/details/${item.id}`}>
                   {/* On pourrait ici ajouter un composant par "image" */}
+                <Link
+                  to={{
+                    pathname: `/details/${item.id}`,
+                    hash: item.original_name,
+                  }}
+                >
                   <img
                     src={'https://image.tmdb.org/t/p/w300' + item.poster_path}
-                    alt={item.original_title}
+                    alt={item.original_name}
                   ></img>
                 </Link>
               </div>
