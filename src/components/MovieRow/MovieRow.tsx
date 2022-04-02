@@ -8,6 +8,7 @@ export interface Props {
   movies: Array<MovieItem>;
 }
 
+// Composant d'une ligne sur la page d'accueuil.
 function MovieRow(props: Props) {
   const [scrollX, setScrollX] = useState(0);
 
@@ -31,12 +32,15 @@ function MovieRow(props: Props) {
   return (
     <div className="movieRow">
       <h2>{props.title}</h2>
+
+      {/* Ces deux divs seraient dans l'ideal, des composants */}
       <div className="movieRow--left" onClick={handleLeftArrow}>
         <p style={{ fontSize: 50 }}>&#60;</p>
       </div>
       <div className="movieRow--right" onClick={handleRightArrow}>
         <p style={{ fontSize: 50 }}>&#62;</p>
       </div>
+
       <div className="movieRow--listarea">
         <div
           className="movieRow--list"
@@ -50,6 +54,7 @@ function MovieRow(props: Props) {
             props.movies?.map((item) => (
               <div key={item.id} className="movieRow--item">
                 <Link to={`/details/${item.id}`}>
+                  {/* On pourrait ici ajouter un composant par "image" */}
                   <img
                     src={'https://image.tmdb.org/t/p/w300' + item.poster_path}
                     alt={item.original_title}

@@ -15,11 +15,13 @@ const initialState = {
   authenticated: false,
 };
 
+// Gestion du store avec un mainContext et d'un provider
 export const AppContext = createContext<{
   state: InitialStateType;
   dispatch: Dispatch<UsernameAction | AuthenticatedAction>;
 }>({ state: initialState, dispatch: () => null });
 
+// Ce reducer est chargé de dispatcher les evenements aux reducers de chaques type
 const mainReducer = (
   { username, authenticated }: InitialStateType,
   action: UsernameAction | AuthenticatedAction
@@ -28,6 +30,7 @@ const mainReducer = (
   authenticated: authenticatedReducer(authenticated, action),
 });
 
+// Renvoi du provider
 export const AppProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
 

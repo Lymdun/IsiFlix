@@ -5,6 +5,7 @@ export type UsernameAction = {
   payload: string;
 };
 
+// Reducer gérant le nom de l'utilisateur selectionné
 export const usernameReducer = (
   state: string | null,
   action: UsernameAction
@@ -12,6 +13,8 @@ export const usernameReducer = (
   switch (action.type) {
     case MainReducerActions.EditName:
       return action.payload;
+    case MainReducerActions.Disconnect:
+      return '';
     default:
       return state;
   }
