@@ -53,7 +53,7 @@ function MovieRow(props: Props) {
             props.movies!.length > 0 &&
             props.movies?.map((item) => (
               <div key={item.id} className="movieRow--item">
-                  {/* On pourrait ici ajouter un composant par "image" */}
+                {/* On pourrait ici ajouter un composant par "image" */}
                 <Link
                   to={{
                     pathname: `/details/${item.id}`,
