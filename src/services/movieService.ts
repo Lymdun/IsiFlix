@@ -5,7 +5,7 @@ import { Movie } from '../models/Movie';
 import { Genre } from '../models/Genre';
 
 const API_BASE = 'https://api.themoviedb.org/3/';
-// Il faudrait dans l'idéal stocker cette clé dans un endroit sécurisé du repo et aller là chercher.
+// Il faudrait dans l'idéal stocker cette clé dans un endroit sécurisé du repo et aller la chercher comme une variable d'environnement.
 const API_KEY = '7153cf3c2ce72856d89dfbdee4dd869b';
 
 async function getMovieItemList(endpoint: string): Promise<Array<MovieItem>> {

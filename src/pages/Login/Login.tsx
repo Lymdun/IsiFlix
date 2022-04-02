@@ -29,7 +29,7 @@ function Login() {
 
   return (
     <div className="mainDiv">
-      <h1>Who's watching?</h1>
+      <h1>Qui est là ?</h1>
       <div className="items">
         {users !== null &&
           users.length > 0 &&
