@@ -19,7 +19,7 @@ Lancement d'une version locale avec ```npm start```.
 ### **Architecture**
 
 #### **Actions / Reducers / Routes**
-Permet la mise en place d'un système de store natif.
+Permet la mise en place d'un système de store natif, et les différentes actions possibles liés à celui-ci (par ex, authentification & déconnexion).
 
 #### **Services**
 - **MovieService** : Permet de récupérer les données concernant les films & séries, via l'API https://api.themoviedb.org/3/. 
