@@ -18,6 +18,9 @@ Lancement d'une version locale avec ```npm start```.
 
 ### **Architecture**
 
+#### **Actions / Reducers / Routes**
+Permet la mise en place d'un système de store natif.
+
 #### **Services**
 - **MovieService** : Permet de récupérer les données concernant les films & séries, via l'API https://api.themoviedb.org/3/. 
 - **UserService** : Service pour récupérer les utilisateurs. Par simplicité, on mock ça en récupérant une liste statique d'utilisateurs.
@@ -30,3 +33,9 @@ Configuration utilisée sur les requêtes interceptées par Axios, ici utilisé 
 
 #### **Components**
 Composants réutilisables, dont le **header** et **MovieRow** (composant graphique pour les lignes affichant les films). Contient leur tsx et css.
+
+#### **Pages**
+Vue par page, contient les fichiers tsx et css. La page **Browse** est celle que l'on voit une fois connecté, **Login** est celle servant à se connecter, **Details** lorsqu'on affiche le détail d'un film et **Error** étant la page 404 par défaut.
+
+#### **Routes**
+Configuration des routes, renvoie sur la page **Error** lorsqu'une url est accédée mais qu'elle ne fait pas partie des routes configurées, et renvoie sur **Login** lorsque le store ne contient pas d'utilisateur authentifié, geré par [authenticatedRoute](../main/src/routes/authenticatedRoute.js).
